@@ -20,17 +20,16 @@ func main() {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	// mongoHost := os.Getenv("mongoHost")
 	// mongoHost := os.Getenv("port")
-	mongoHost := viper.GetString("mongo.host")
+	mongoHost := viper.GetString("Mongo.Host")
+	mongoUser := viper.GetString("Mongo.User")
+	mongoPass := viper.GetString("Mongo.Password")
 	port := viper.GetString("port")
-
-	fmt.Print(mongoHost)
-	fmt.Print(port)
 
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	session, err := mgo.Dial(mongoHost)
+	session, err := mgo.Dial(mongoUser + ":"+ mongoPass + "@" + mongoHost)
 	if err != nil {
 		e.Logger.Fatal(err)
 		return
