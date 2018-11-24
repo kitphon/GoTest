@@ -22,7 +22,7 @@ func main() {
 	mongoHost := viper.GetString("MONGO.HOST")
 	mongoUser := viper.GetString("MONGO.USER")
 	mongoPass := viper.GetString("MONGO.PASS")
-	port := viper.GetString("PORT")
+	port := ":"+ viper.GetString("PORT")
 
 	// Middleware
 	e.Use(middleware.Logger())
