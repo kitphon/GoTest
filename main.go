@@ -2,7 +2,6 @@ package main
 
 import (
 	// "os"
-	"fmt"
 	"strings"
 	"net/http"
 	"github.com/labstack/echo"
@@ -20,10 +19,10 @@ func main() {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	// mongoHost := os.Getenv("mongoHost")
 	// mongoHost := os.Getenv("port")
-	mongoHost := viper.GetString("Mongo.Host")
-	mongoUser := viper.GetString("Mongo.User")
-	mongoPass := viper.GetString("Mongo.Password")
-	port := viper.GetString("port")
+	mongoHost := viper.GetString("MONGO.HOST")
+	mongoUser := viper.GetString("MONGO.USER")
+	mongoPass := viper.GetString("MONGO.PASS")
+	port := viper.GetString("PORT")
 
 	// Middleware
 	e.Use(middleware.Logger())
